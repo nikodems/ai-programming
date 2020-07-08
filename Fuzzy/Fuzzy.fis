@@ -1,0 +1,47 @@
+[System]
+Name='Fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Distance'
+Range=[-1 1]
+NumMFs=3
+MF1='Left':'trimf',[-1.8 -1 -0]
+MF2='Zero':'trimf',[-0.4 0 0.4]
+MF3='Right':'trimf',[0 1 1.8]
+
+[Input2]
+Name='Velocity'
+Range=[-1 1]
+NumMFs=3
+MF1='Left':'trimf',[-1.8 -1 0]
+MF2='Zero':'trimf',[-0.4 0 0.4]
+MF3='Right':'trimf',[0 1 1.8]
+
+[Output1]
+Name='Steering'
+Range=[-1 1]
+NumMFs=3
+MF1='Left':'trimf',[-1.8 -1 -0]
+MF2='Zero':'trimf',[-0.4 0 0.4]
+MF3='Right':'trimf',[0 1 1.8]
+
+[Rules]
+1 1, 3 (1) : 1
+1 2, 3 (1) : 1
+1 3, 2 (1) : 1
+2 1, 3 (1) : 1
+2 2, 2 (1) : 1
+2 3, 1 (1) : 1
+3 1, 2 (1) : 1
+3 2, 1 (1) : 1
+3 3, 1 (1) : 1
